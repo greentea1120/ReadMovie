@@ -8,10 +8,32 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面加载
+   * 生命周期函数--监听页面 加载
    */
   onLoad: function (options) {
-    
+    var posts_content = [
+      {
+        date: 'Sep 18 2016',
+        title: '正是虾肥蟹壮时',
+        post_img: '/images/post/crab.png',
+        author_img: '/images/avatar/1.png',
+        content: '螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹',
+        view_num: '112',
+        collect_num: '96'
+      },
+      {
+        date: 'Nov 18 2016',
+        title: '正是虾肥蟹壮时',
+        post_img: '/images/post/crab.png',
+        author_img: '/images/avatar/2.png',
+        content: '螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹',
+        view_num: '112',
+        collect_num: '96'
+      }
+    ]
+    this.setData({
+      posts_key: posts_content
+    })
   },
 
   /**
