@@ -15,20 +15,20 @@ Page({
       {
         date: 'Sep 18 2016',
         title: '正是虾肥蟹壮时',
-        post_img: '/images/post/crab.png',
-        author_img: '/images/avatar/1.png',
+        imgSrc: '/images/post/crab.png',
+        avatar: '/images/avatar/1.png',
         content: '螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹',
-        view_num: '112',
-        collect_num: '96'
+        reading: '112',
+        collection: '96'
       },
       {
-        date: 'Nov 18 2016',
+        date: 'Sep 18 2016',
         title: '正是虾肥蟹壮时',
-        post_img: '/images/post/crab.png',
-        author_img: '/images/avatar/2.png',
+        imgSrc: '/images/post/crab.png',
+        avatar: '/images/avatar/1.png',
         content: '螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹螃蟹',
-        view_num: '112',
-        collect_num: '96'
+        reading: '112',
+        collection: '96'
       }
     ]
     this.setData({
