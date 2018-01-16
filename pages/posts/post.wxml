@@ -2,9 +2,9 @@
 
 <view>
   <swiper indicator-dots='true' autoplay='true' interval='3000'>
-    <swiper-item><image src='/images/wx.png'></image></swiper-item>
-    <swiper-item><image src='/images/vr.png'></image></swiper-item>
-    <swiper-item><image src='/images/iqiyi.png'></image></swiper-item>
+    <swiper-item><image src='/images/guo1.png'></image></swiper-item>
+    <swiper-item><image src='/images/guo2.png'></image></swiper-item>
+    <swiper-item><image src='/images/guo3.png'></image></swiper-item>
   </swiper>
   <block wx:for="{{posts_key}}" wx:key="*this" wx:for-item="item">
     <view catchtap='onPostTap' data-postid='{{item.postId}}'>
