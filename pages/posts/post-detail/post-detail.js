@@ -1,10 +1,12 @@
 var postsData = require('../../../data/posts-data.js')
+var app = getApp()
 
 Page({
   data: {
     isPlayingMusic: false
   },
   onLoad: function (option) {
+    var globalData = app.globalData
     var postId = option.id
     this.setData({
       currentPostId: postId
@@ -26,22 +28,46 @@ Page({
       postsCollected[postId] = false
       wx.setStorageSync('posts_collected', postsCollected)
     }
+
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === postId) {
+      this.setData({
+        isPlayingMusic: true
+      })
+    }
+    this.setAudioMonitor()
+  },
+  setAudioMonitor: function () {
+    var that = this
+    wx.onBackgroundAudioPlay(function () {
+      that.setData({
+        isPlayingMusic: true
+      })
+      app.globalData.g_isPlayingMusic = true
+      app.globalData.g_currentMusicPostId = that.data.currentPostId
+    })
+    wx.onBackgroundAudioPause(function () {
+      that.setData({
+        isPlayingMusic: false
+      })
+      app.globalData.g_isPlayingMusic = false
+      app.globalData.g_currentMusicPostId = null
+    })
   },
   onCollectionTap: function (event) {
     this.getPostCollectedSyc()
   },
-  getPostCollectedSyc: function() {
+  getPostCollectedSyc: function () {
     var postsCollected = wx.getStorageSync('posts_collected')
     var postCollected = postsCollected[this.data.currentPostId]
     postCollected = !postCollected
     postsCollected[this.data.currentPostId] = postCollected
     this.showToast(postsCollected, postCollected)
   },
-  getPostsCollectedAsy: function() {
+  getPostsCollectedAsy: function () {
     var that = this
     wx.getStorage({
       key: 'posts_collected',
-      success: function(res) {
+      success: function (res) {
         var postsCollected = res.data
         var postCollected = postsCollected[that.data.currentPostId]
         postCollected = !postCollected;
@@ -106,7 +132,9 @@ Page({
       }
     })
   },
-  onMusicTap: function() {
+  onMusicTap: function () {
+    var currentPostId = this.data.currentPostId
+    var postData = postsData.postList[currentPostId]
     var isPlayingMusic = this.data.isPlayingMusic
     if (isPlayingMusic) {
       wx.pauseBackgroundAudio()
@@ -115,9 +143,9 @@ Page({
       })
     } else {
       wx.playBackgroundAudio({
-        dataUrl: 'http://ws.stream.qqmusic.qq.com/M500001VfvsJ21xFqb.mp3?guid=ffffffff82def4af4b12b3cd9337d5e7&uin=346897220&vkey=6292F51E1E384E061FF02C31F716658E5C81F5594D561F2E88B854E81CAAB7806D5E4F103E55D33C16F3FAC506D1AB172DE8600B37E43FAD&fromtag=46',
-        title: '此时此刻-许巍',
-        coverImgUrl: 'http://y.gtimg.cn/music/photo_new/T002R300x300M000003rsKF44GyaSk.jpg?max_age=2592000'
+        dataUrl: postData.music.url,
+        title: postData.music.title,
+        coverImgUrl: postData.music.coverImg
       })
       this.setData({
         isPlayingMusic: true
