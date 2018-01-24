@@ -1,12 +1,14 @@
-.container{
+.container {
   display: flex;
   flex-direction: column;
 }
-.head-image{
+
+.head-image {
   width: 750rpx;
   height: 460rpx;
 }
-.audio{
+
+.audio {
   width: 102rpx;
   height: 110rpx;
   position: absolute;
@@ -15,35 +17,41 @@
   top: 180rpx;
   opacity: 0.6;
 }
-.author-date{
+
+.author-date {
   flex-direction: row;
   margin-left: 30rpx;
   margin-top: 20rpx;
 }
-.avatar{
+
+.avatar {
   height: 64rpx;
   width: 64rpx;
   vertical-align: middle;
 }
-.author{
+
+.author {
   font-size: 30rpx;
   font-weight: 300;
   margin-left: 20rpx;
   vertical-align: middle;
   color: #666;
 }
-.const-text{
+
+.const-text {
   font-size: 24rpx;
   color: #999;
   margin-left: 20rpx;
 }
-.date{
+
+.date {
   margin-left: 30rpx;
   font-size: 24rpx;
   color: #999;
   vertical-align: middle;
 }
-.title{
+
+.title {
   margin-left: 40rpx;
   font-size: 36rpx;
   font-weight: 700;
@@ -51,22 +59,27 @@
   letter-spacing: 2px;
   color: #4b556c;
 }
-.tool{
+
+.tool {
   margin-top: 20rpx;
 }
-.circle-img{
+
+.circle-img {
   float: right;
   margin-right: 40rpx;
   vertical-align: middle;
 }
-.circle-img image{
+
+.circle-img image {
   width: 90rpx;
   height: 90rpx;
 }
-.share-img{
+
+.share-img {
   margin-left: 30rpx;
 }
-.horizon{
+
+.horizon {
   width: 660rpx;
   height: 1px;
   background-color: #e5e5e5;
@@ -76,7 +89,8 @@
   margin: 0 auto;
   z-index: -99;
 }
-.detail{
+
+.detail {
   color: #666;
   margin-left: 30rpx;
   margin-top: 20rpx;
