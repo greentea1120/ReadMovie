@@ -1,3 +1,4 @@
+var util = require('../../utils/util.js')
 var app = getApp()
 
 Page({
@@ -6,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    inTheaters: {},
+    comingSoon: {},
+    top250: {}
   },
 
   /**
@@ -17,11 +20,11 @@ Page({
     var comingSoon = `${app.globalData.doubanBase}/v2/movie/coming_soon?start=0&count=3`
     var top250Url = `${app.globalData.doubanBase}/v2/movie/top250?start=0&count=3`
 
-    this.getMovieListData(inTheatersUrl)
-    // this.getMovieListData(comingSoon)
-    // this.getMovieListData(top250Url)
+    this.getMovieListData(inTheatersUrl, "inTheaters", "正在热映")
+    this.getMovieListData(comingSoon, "comingSoon", "即将上映")
+    this.getMovieListData(top250Url, "top250", "豆瓣TOP250")
   },
-  getMovieListData: function(url) {
+  getMovieListData: function(url, settedKey, categoryTitle) {
     var that = this;
     wx.request({
       url: url,
@@ -31,22 +34,25 @@ Page({
       },
       success: function(res) {
         console.log(res)
-        that.processDouBanData(res.data)
+        that.processDouBanData(res.data, settedKey, categoryTitle)
       },
       fail: function(error) {
         console.log(error)
       }
     })
   },
-  processDouBanData: function(moviesDouBan) {
+  processDouBanData: function (moviesDouBan, settedKey, categoryTitle) {
     var movies = []
     for(var idx in moviesDouBan.subjects) {
+      // console.log(moviesDouBan.subjects)
       var subject = moviesDouBan.subjects[idx]
       var title = subject.title
       if(title.length >= 6) {
         title = title.substring(0, 6) + "..."
       }
+
       var temp = {
+        stars: util.convertToStarArray(subject.rating.stars),
         title: title,
         average: subject.rating.average,
         coverageUrl: subject.images.large,
@@ -54,10 +60,11 @@ Page({
       }
       movies.push(temp)
     }
-    this.setData({
-      movies: movies
-    })
-    console.log(this.data.movies)
+    var readyData = {}
+    readyData[settedKey] = {
+      categoryTitle,
+      movies
+    }
+    this.setData(readyData)
   }
- 
 })
