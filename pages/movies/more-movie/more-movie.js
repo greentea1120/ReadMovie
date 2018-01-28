@@ -63,6 +63,7 @@ Page({
       movies: totalMovies
     })
     wx.hideNavigationBarLoading()
+    wx.stopPullDownRefresh()
     this.setData({
       totalCount: this.data.totalCount + 20
     })
@@ -70,6 +71,13 @@ Page({
   onScrollLower: function(event) {
     var nextUrl = `${this.data.requestUrl}?start=${this.data.totalCount}&count=20`
     util.http(nextUrl, this.processDoubanData)
+    wx.showNavigationBarLoading()
+  },
+  onPullDownRefresh: function(event) {
+    var refreshUrl = `${this.data.requestUrl}?star=0&count=20` 
+    this.data.movies = {}
+    this.data.isEmpty = true
+    util.http(refreshUrl, this.processDoubanData)
     wx.showNavigationBarLoading()
   },
   onReady: function (event) {
