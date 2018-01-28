@@ -4,7 +4,6 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  padding-bottom: 10rpx;
 }
 
 .movie-head {

@@ -11,7 +11,24 @@ function convertToStarArray(stars) {
   }
   return array
 }
+function http(url,callBack) {
+  var that = this;
+  wx.request({
+    url: url,
+    method: 'GET',
+    header: {
+      'Content-Type': 'json'
+    },
+    success: function (res) {
+      callBack(res.data)
+    },
+    fail: function (error) {
+      console.log(error)
+    }
+  })
+}
 
 module.exports = {
-  convertToStarArray: convertToStarArray
+  convertToStarArray,
+  http
 }

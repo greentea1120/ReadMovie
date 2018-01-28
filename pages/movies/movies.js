@@ -2,19 +2,11 @@ var util = require('../../utils/util.js')
 var app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     inTheaters: {},
     comingSoon: {},
     top250: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     var inTheatersUrl  = `${app.globalData.doubanBase}/v2/movie/in_theaters?start=0&count=3`
     var comingSoon = `${app.globalData.doubanBase}/v2/movie/coming_soon?start=0&count=3`
@@ -22,7 +14,7 @@ Page({
 
     this.getMovieListData(inTheatersUrl, "inTheaters", "正在热映")
     this.getMovieListData(comingSoon, "comingSoon", "即将上映")
-    this.getMovieListData(top250Url, "top250", "豆瓣TOP250")
+    this.getMovieListData(top250Url, "top250", "豆瓣Top250")
   },
   getMovieListData: function(url, settedKey, categoryTitle) {
     var that = this;
@@ -33,7 +25,7 @@ Page({
         'Content-Type': 'json'
       },
       success: function(res) {
-        console.log(res)
+        // console.log(res)
         that.processDouBanData(res.data, settedKey, categoryTitle)
       },
       fail: function(error) {
@@ -66,5 +58,11 @@ Page({
       movies
     }
     this.setData(readyData)
+  },
+  onMoreTap: function(event) {
+    var category = event.currentTarget.dataset.category
+    wx.navigateTo({
+      url: 'more-movie/more-movie?category=' + category
+    })
   }
 })
