@@ -28,7 +28,29 @@ function http(url,callBack) {
   })
 }
 
+function convertToCastString(casts) {
+  var castjoin = ''
+  for (var idx in casts) {
+    castjoin = castjoin + casts[idx].name + '/'
+  }
+  return castjoin.substring(0, castjoin.length-2)
+}
+
+function convertToCastInfos(casts) {
+  var castsArray = []
+  for (var idx in casts) {
+    var cast = {
+      img: casts[idx].avatar?casts[idx].avatars.large: '',
+      name: casts[idx].name
+    }
+    castsArray.push(cast)
+  }
+  return castsArray
+}
+
 module.exports = {
   convertToStarArray,
-  http
+  http,
+  convertToCastString,
+  convertToCastInfos
 }
