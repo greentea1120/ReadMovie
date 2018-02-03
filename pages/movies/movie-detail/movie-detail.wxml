@@ -1,7 +1,7 @@
-<import src='../stars/stars-tempalte.wxml' />
+<import src='../stars/stars-template.wxml' />
 <view class="container">
   <image class='head-img' src='{{movie.movieImg}}' mode='aspectFill'></image>
-  <view class='head-img-hover' data-src='{{movie.movieImg}}' catchtap='viewMoviePostImg'>
+  <view class='head-img-hover'>
     <text class='main-title'>{{movie.title}}</text>
     <text class='sub-title'>{{movie.country + '.' + movie.year}}</text>
     <view class='like'>
@@ -11,7 +11,7 @@
       <text class='plain-font'>条评论</text>
     </view>
   </view>
-  <image class='movie-img' src='{{movie.movieImg}}'></image>
+  <image class='movie-img' src='{{movie.movieImg}}' data-src='{{movie.movieImg}}' catchtap='viewMoviePostImg'></image>
   <view class='summary'>
     <view class='original-title'>
       <text>{{movie.originalTitle}}</text>

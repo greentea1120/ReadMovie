@@ -50,6 +50,7 @@ Page({
       current: src,
       urls: [src]
     })
-  }
+    console.log('click')
+  } 
 
 })

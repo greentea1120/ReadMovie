@@ -85,5 +85,11 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.navigateTitle
     })
+  },
+  onMovieTap(event) {
+    var movieId = event.currentTarget.dataset.movieid
+    wx.navigateTo({
+      url: `/pages/movies/movie-detail/movie-detail?id=${movieId}`
+    })
   }
 })
