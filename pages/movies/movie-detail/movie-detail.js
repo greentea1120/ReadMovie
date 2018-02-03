@@ -36,14 +36,20 @@ Page({
       score: data.rating.average,
       director,
       casts: util.convertToCastString(data.casts),
-      castInfo: util.convertToCastInfos(data.casts),
+      castsInfo: util.convertToCastInfos(data.casts),
       summary: data.summary
     }
     console.log(movie)
     this.setData({
       movie
     })
-
+  },
+  viewMoviePostImg: function(e) {
+    var src = e.currentTarget.dataset.src
+    wx.previewImage({
+      current: src,
+      urls: [src]
+    })
   }
 
 })
